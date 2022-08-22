@@ -1,0 +1,19 @@
+name: Hello World CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+      - name: "Sätter upp Node v16 i vårt workflow"
+      - uses: action/setup-node@v3
+        with:
+          node-version: 16
+      - run: "npm install"
+      - run: "npm run build"
